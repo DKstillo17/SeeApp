@@ -34,11 +34,15 @@ public class MapaFragment extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions()
-                .position(sydney)
-                .title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        Mapper(googleMap);
+    }
+
+    public void Mapper (GoogleMap googleMap) {
+        mMap = googleMap;
+
+        final LatLng punto1 = new LatLng(10.9838942,-74.8530371);
+        mMap.addMarker(new MarkerOptions().position(punto1).title("Ciudad de Barranquilla"));
+
+
     }
 }

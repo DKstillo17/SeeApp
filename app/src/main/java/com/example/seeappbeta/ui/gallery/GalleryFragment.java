@@ -4,6 +4,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,22 +19,26 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.seeappbeta.R;
 
-public class GalleryFragment extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
 
-    private GalleryViewModel galleryViewModel;
+public class GalleryFragment extends Fragment{
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
-                new ViewModelProvider(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        galleryViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
-        return root;
+    private List<String> mLista = new ArrayList<>();
+    private ArrayAdapter<String> mAdapter;
+
+
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        View view = inflater.inflate(R.layout.fragment_gallery, container, false);
+
+        Button mBtnAñadir = (Button) view.findViewById(R.id.btnAmbulances);
+        ListView mListView = (ListView) view.findViewById(R.id.listView);
+        EditText mEditText = (EditText) view.findViewById(R.id.ubiAmbulanceUser);
+        TextView mTextView = (TextView) view.findViewById(R.id.textView5);
+
+
+        return view;
     }
+
 }
